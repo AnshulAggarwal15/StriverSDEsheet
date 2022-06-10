@@ -1,0 +1,31 @@
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        int rows = matrix.size();
+        int columns = matrix[0].size();
+        vector<int> x,y;   
+        for(int i = 0; i<rows; i++){
+            for(int j = 0; j<columns; j++){
+                if(matrix[i][j] == 0){
+                    x.push_back(i);
+                    y.push_back(j);
+                }
+            }
+        }
+        
+        for(int i = 0; i<x.size(); i++){
+            for(int j = 0; j<columns; j++){
+                matrix[x[i]][j] = 0;
+            }
+        }
+        
+        for(int i = 0; i<y.size(); i++){
+            for(int j = 0; j<rows; j++){
+                matrix[j][y[i]] = 0;
+            }
+        }
+    }
+};
+
+//Time Complexity - O(m*n)
+//Space Complexity - (m+n)
