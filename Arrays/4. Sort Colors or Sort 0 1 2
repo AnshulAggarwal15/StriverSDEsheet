@@ -1,0 +1,19 @@
+// Sorting array of 0, 1 and 2 
+// 1) we can sort array (using any sorting algo). => inplace and O(nlogn)
+// 2) we can count number 0s, 1s and 2s. And, then change values. => O(n) and not inplace
+// 3) Below algorithm => O(n) and inplace.
+
+void sortColors(vector<int>& arr) {
+    int n = arr.size();
+    int i = 0, e = n-1, s = 0;
+    while(i < n and s < n and e >= 0){
+        if(i >= e and arr[i] == 2) break;
+        if(arr[i] == 0) swap(arr[i], arr[s++]);
+        else if(arr[i] == 2) swap(arr[i], arr[e--]);
+        else i++;
+        if(i<=s){
+            while(i<n and arr[i] == 0) i++;
+        }
+    }
+}
+
