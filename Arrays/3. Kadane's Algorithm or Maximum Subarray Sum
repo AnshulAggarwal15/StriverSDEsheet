@@ -1,0 +1,30 @@
+// Solution 1 - 
+
+long long maxSubarraySum(int arr[], int n)
+{
+    long long ans = 0, s = 0;
+    for(int i = 0; i < n; i++){
+        s+=arr[i];
+        if(s < 0) s = 0;
+        ans = max(ans, s);
+    }
+    return ans;
+}
+
+// Though above algorithm is correct and will get submitted on most platforms except LeetCode(afaik).
+// But the above algorithm doesn't take an array of only negative numbers in consideration and will give 0 as the output.
+// While the correct output should be the maximum element of the array.
+// For eg - array = [-1,-2,-3,-4,-5]
+// The correct output should be -1 but the above algo will produce output as 0.
+
+//Solution 2 (The correct algorithm) - 
+
+int maxSubArray(vector<int>& arr) {
+    int ans = INT_MIN/2, s = 0, n = arr.size();
+    for(int i = 0; i < n; i++){
+        s += arr[i];
+        if(s < arr[i]) s = arr[i];
+        ans = max(ans, s);
+    }
+    return ans;
+}
