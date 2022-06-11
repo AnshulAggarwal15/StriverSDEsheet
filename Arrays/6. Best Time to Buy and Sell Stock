@@ -1,0 +1,12 @@
+int maxProfit(vector<int>& v) {
+    int n = v.size(), ans = 0;
+    int m=v[0];
+    for(int i = 1; i < n; i++){
+        ans = max(ans, v[i]-m);
+        m = min(m, v[i]);
+    }
+    return ans;
+}
+
+//T(C) = O(N)
+//S(C) = O(1)
