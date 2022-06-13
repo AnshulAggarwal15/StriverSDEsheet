@@ -1,0 +1,15 @@
+vector<vector<int>> merge(vector<vector<int>>& v) {
+    sort(v.begin(), v.end());
+    for(int i = 0; i < v.size()-1; ){
+        int j = i+1;
+        if(v[i][1]>=v[j][0]){
+            while(j<v.size() and v[i][1]>=v[j][0]){
+                v[i][1] = max(v[i][1], v[j][1]);    
+                j++;
+            }
+            v.erase(v.begin()+i+1, v.begin()+j);
+        }
+        i++;
+    }
+    return v;
+}
