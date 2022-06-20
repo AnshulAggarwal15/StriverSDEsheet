@@ -1,0 +1,21 @@
+int lengthOfLongestSubstring(string s) {
+    int n = s.length();
+    unordered_map<char, int> mp;
+    int i = 0, j = 0, ans = 0;
+
+    while(j<n){
+        if(mp.find(s[j]) == mp.end()){
+            mp[s[j]]++;
+            ans = max(ans, j-i+1);
+        }
+        else{
+            while(mp.find(s[j]) != mp.end()){
+                mp.erase(s[i]);
+                i++;
+            }
+            mp[s[j]]++;
+        }
+        j++;
+    }
+    return ans;
+}
